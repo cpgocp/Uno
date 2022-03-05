@@ -9,13 +9,23 @@ public class Game {
 
     private static final int HAND_SIZE = 7;
 
-    private int turn;
+    private static int turn;
+    private static ArrayList<Player> order;
+
+    private static int addCount;
 
     Random random = new Random();
 
-    public Game(){
+
+    public Game(int players){
+
+        for(int i = 0; i < players; i++){
+            Player player = new Player(HAND_SIZE);
+            order.add(player);
+        }
 
         turn = 0;
+        addCount = 0;
 
         for(int i = 0; i < 4; i++){ //4 suits
             for(int j = 0; j < 13 ; j++ ){ //colored cards
@@ -30,6 +40,10 @@ public class Game {
             Deck.add(card4);
         }
 
+    }
+
+    public static void resetAddCount(){
+        addCount = 0;
     }
 
     public void shuffleDeck(){
@@ -52,8 +66,59 @@ public class Game {
         return top;
     }
 
-    public void addTurn(int n){
+    public static void addTurn(int n){
         turn += n;
+    }
+
+    public static void reverseOrder(){
+        ArrayList<Player> reversed = new ArrayList<Player>();
+        for(int i = order.size() - 1; i >=0 ; i--){
+            reversed.add(order.get(i));
+        }
+        order = reversed;
+    }
+
+    public static boolean playCard(Card card){
+        if(card.getColor().equals("Wild")){
+            Discard.add(card);
+            if(card.getNum() == 4){
+                addCount+=4;
+                Game.addTurn(1);
+            } else {
+                Game.addTurn(1);
+            }
+            return true;
+        }else if (Game.getTop().getColor().equals(card.getColor())){
+            Discard.add(card);
+            if(card.getNum() == 11){
+                addCount+=2;
+                Game.addTurn(1);
+            } else if (card.getNum() == 10) {
+                Game.addTurn(2);
+            } else if (card.getNum() == 12){
+                Game.reverseOrder();
+                Game.addTurn(1);
+            } else {
+                Game.addTurn(1);
+            }
+            return true;
+        } else if (Game.getTop().getNum() == card.getNum()){
+            Discard.add(card);
+            if(card.getNum() == 11){
+                addCount+=2;
+                Game.addTurn(1);
+            } else if (card.getNum() == 10) {
+                Game.addTurn(2);
+            } else if (card.getNum() == 12){
+                Game.reverseOrder();
+                Game.addTurn(1);
+            } else {
+                Game.addTurn(1);
+            }
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
