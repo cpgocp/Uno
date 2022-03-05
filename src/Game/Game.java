@@ -25,10 +25,15 @@ public class Game {
             Deck.add(card4);
         }
 
-        for(int i = 0; i < Deck.size(); i++){
-
-        }
     }
 
+    public void shuffleDeck(){
+        for(int i = Deck.size(); i > 1; i--){
+            int j = random.nextInt(i);
+            Card hold = Deck.get(i);
+            Deck.set(i,Deck.get(j));
+            Deck.set(j,hold);
+        }
+    }
 
 }
