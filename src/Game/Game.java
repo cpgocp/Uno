@@ -47,4 +47,13 @@ public class Game {
         return drawn;
     }
 
+    public static Card getTop(){
+        Card top = Discard.get(Deck.size() - 1);
+        return top;
+    }
+
+    public void addTurn(int n){
+        turn += n;
+    }
+
 }
