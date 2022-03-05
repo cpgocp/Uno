@@ -18,14 +18,17 @@ public class Player {
                 Game.playCard(Hand.get(i), "");
                 Hand.remove(i);
                 played = true;
+                break;
             } else if (!Hand.get(i).getColor().equals("Wild") && Game.getTop().getNum() == Hand.get(i).getNum()){
                 Game.playCard(Hand.get(i), "");
                 Hand.remove(i);
                 played = true;
+                break;
             } else if (Hand.get(i).getColor().equals("Wild")) {
                 Game.playCard(Hand.get(i), mostColor());
                 Hand.remove(i);
                 played = true;
+                break;
             }
         }
         if(played == false){
