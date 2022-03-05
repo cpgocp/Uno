@@ -4,14 +4,19 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Game {
-    private ArrayList<Card> Deck;
-    private ArrayList<Card> Discard;
+    private static ArrayList<Card> Deck;
+    private static ArrayList<Card> Discard;
 
-    private static int HAND_SIZE = 7;
+    private static final int HAND_SIZE = 7;
+
+    private int turn;
 
     Random random = new Random();
 
     public Game(){
+
+        turn = 0;
+
         for(int i = 0; i < 4; i++){ //4 suits
             for(int j = 0; j < 13 ; j++ ){ //colored cards
                 Card card1 = new Card(i,j);
@@ -34,6 +39,12 @@ public class Game {
             Deck.set(i,Deck.get(j));
             Deck.set(j,hold);
         }
+    }
+
+    public static Card drawDeck(){
+        Card drawn = Deck.get(Deck.size() - 1);
+        Deck.remove(Deck.size() - 1);
+        return drawn;
     }
 
 }
