@@ -78,13 +78,14 @@ public class Game {
         order = reversed;
     }
 
-    public static boolean playCard(Card card){
+    public static boolean playCard(Card card, String color){
         if(card.getColor().equals("Wild")){
-            Discard.add(card);
             if(card.getNum() == 4){
                 addCount+=4;
+                Discard.add(card);
                 Game.addTurn(1);
             } else {
+                Discard.add(card);
                 Game.addTurn(1);
             }
             return true;
