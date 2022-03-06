@@ -55,6 +55,10 @@ public class Game {
         return order;
     }
 
+    public static int getDeckSize(){
+        return Deck.size();
+    }
+
     public static int getTurn() {
         return turn;
     }
@@ -77,7 +81,7 @@ public class Game {
     }
 
     public static void mergeDecks(){
-        for(int i = 0; i < Discard.size() - 1; i--){
+        for(int i = 0; i < Discard.size() - 1; i++){
             Deck.add(Discard.get(i));
             if(Deck.get(Deck.size()-1).isWild()){
                 Deck.get(Deck.size()-1).setColor("Wild");
@@ -125,6 +129,7 @@ public class Game {
             if(card.getNum() == 4){
                 addCount+=4;
                 Discard.add(card);
+                getTop().setColor(color);
                 Game.addTurn(1);
             } else {
                 Discard.add(card);

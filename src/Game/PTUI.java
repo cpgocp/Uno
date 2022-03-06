@@ -8,26 +8,31 @@ public class PTUI {
         Scanner scanner = new Scanner(System.in);
         Game game = new Game();
         int players = 2;
-        Player current = game.getOrder().get((game.getTurn()%players));
-        Player other = game.getOrder().get(((game.getTurn() + 1)%players));
+        Player current = game.getOrder().get((Game.getTurn()%players));
+        Player other = game.getOrder().get(((Game.getTurn() + 1)%players));
         String message = "";
         int extraC;
         int extraO;
 
-        while(!game.hasWinner()){
+        while(!Game.hasWinner()){
             message = "";
 
-            current = game.getOrder().get((game.getTurn()%players));
-            other = game.getOrder().get(((game.getTurn() + 1)%players));
+            current = game.getOrder().get((Game.getTurn()%players));
+            other = game.getOrder().get(((Game.getTurn() + 1)%players));
 
-            Card last = game.getTop();
+            Card last = Game.getTop();
             Card tmp;
 
             if(current.isAuto()){ // autobot section
-                if(game.getAddCount() != 0 && !current.hasPlus()){
-                    current.countAdd(game.getAddCount());
-                    message += "Bot drew " + game.getAddCount() + "\n";
-                    game.resetAddCount();
+                if(Game.getAddCount() >= Game.getDeckSize()){
+                    Game.mergeDecks();
+                    message += "Merged decks";
+                }
+
+                if(Game.getAddCount() != 0 && !current.hasPlus()){
+                    current.countAdd(Game.getAddCount());
+                    message += "Bot drew " + Game.getAddCount() + "\n";
+                    Game.resetAddCount();
                 }
                 tmp = current.chooseCard(); // bot picks card + plays card
                 if(tmp != null && !tmp.getColor().equals("Wild")){ // messages for autobot
@@ -92,7 +97,11 @@ public class PTUI {
                 String wildC = "";
                 boolean move = false;
                 message = "";
-                if(game.getAddCount() != 0 && !current.hasPlus()){
+                if(Game.getAddCount() >= Game.getDeckSize()){ // check deck size
+                    Game.mergeDecks();
+                    message += "Merged decks";
+                }
+                if(game.getAddCount() != 0 && !current.hasPlus()){ // check if player has plus
                     current.countAdd(game.getAddCount());
                     message += "You drew " + game.getAddCount() + "\n";
                     game.resetAddCount();
