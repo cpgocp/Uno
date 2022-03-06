@@ -48,11 +48,12 @@ public class PTUI {
                     game.resetAddCount();
                 }
 
-                if(current.getHandSize() == 1){
+                if(current.getHandSize() == 1){ //uno + win check;
                     message += "Bot Uno!\n";
                 } else if (current.getHandSize() == 0){
                     message += "Bot Won!\n";
                     current.setWinner(true);
+                    break;
                 }
 
                 //auto printing section
@@ -156,11 +157,12 @@ public class PTUI {
 
                 } //end of player input
 
-                if(current.getHandSize() == 1){
+                if(current.getHandSize() == 1){ //uno + win check
                     message += "You have Uno!\n";
                 } else if (current.getHandSize() == 0){
                     message += "You Won!\n";
                     current.setWinner(true);
+                    break;
                 }
 
 

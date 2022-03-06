@@ -39,6 +39,9 @@ public class Game {
 
         Discard.add(Deck.get(Deck.size()-1));
         Deck.remove(Deck.size() - 1);
+        if(Discard.get(0).isWild()){
+            Discard.get(0).setColor("Red");
+        }
 
         int players = 2;
 
