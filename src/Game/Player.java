@@ -32,6 +32,14 @@ public class Player {
         return this.winner;
     }
 
+    public int getHandSize(){
+        return this.Hand.size();
+    }
+
+    public ArrayList<Card> getHand(){
+        return this.Hand;
+    }
+
     public Card chooseCard(){
         for(int i = 0; i < this.Hand.size(); i++){
             if(!this.Hand.get(i).getColor().equals("Wild") && Game.getTop().getColor().equals(this.Hand.get(i).getColor())){

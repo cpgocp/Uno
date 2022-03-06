@@ -11,7 +11,8 @@ public class PTUI {
         Player current;
         Player other;
         String message = "";
-        int extra;
+        int extraC;
+        int extraO;
 
         while(!game.hasWinner()){
             message = "";
@@ -40,7 +41,28 @@ public class PTUI {
                 }
 
                 System.out.println(message);
-                for()
+                extraC = current.getHandSize() - 8;
+                if(extraC>0){
+                    System.out.print(" ## ## ## ## ## ## ## ## +" + extraC);
+                } else {
+                    for( int i = 0; i < current.getHandSize() ; i++) {
+                        System.out.print(" ##");
+                    }
+                }
+                System.out.print("\n");
+                System.out.println(" ");
+                System.out.println("          ##    " + game.getTop());
+                System.out.println(" ");
+                System.out.print(" Dr ");
+                extraO = other.getHandSize() - 7;
+                if(extraO>0){
+                    System.out.print("## ## ## ## ## ## ## +" + extraO);
+                    System.out.print(" Mo");
+                } else {
+                    for(int i = 0; i < 7; i++){
+                        System.out.print(other.getHand().get(i) + " ");
+                    }
+                }
 
             } else {
 

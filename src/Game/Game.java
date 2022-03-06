@@ -35,6 +35,8 @@ public class Game {
             Deck.add(card4);
         }
 
+        shuffleDeck();
+
         Discard.add(Deck.get(Deck.size()-1));
         Deck.remove(Deck.size() - 1);
 
