@@ -93,6 +93,7 @@ public class PTUI {
                 System.out.println("");
 
             } else { // player controlled section
+                System.out.println("Press Number-Key to play card or action:");
                 int input = scanner.nextInt();
                 String wildC = "";
                 boolean move = false;
@@ -107,7 +108,6 @@ public class PTUI {
                     game.resetAddCount();
                 }
                 while(!move) {
-                    System.out.println("Press Number-Key to play card or action:");
                     if (input == 1) {
                         tmp = game.drawDeck();
                         current.getHand().add(tmp);

@@ -47,7 +47,7 @@ public class Game {
             order.add(player);
         }
 
-        order.get(0).setAuto(false);
+        order.get(1).setAuto(false);
 
     }
 
