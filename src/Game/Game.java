@@ -17,12 +17,16 @@ public class Game {
     Random random = new Random();
 
 
-    public Game(int players){
+    public Game(){
+
+        int players = 2;
 
         for(int i = 0; i < players; i++){
             Player player = new Player(HAND_SIZE);
             order.add(player);
         }
+
+        order.get(0).setAuto(false);
 
         turn = 0;
         addCount = 0;
@@ -76,6 +80,16 @@ public class Game {
             reversed.add(order.get(i));
         }
         order = reversed;
+    }
+
+    public static boolean hasWinner(){
+        boolean winCheck = false;
+        for(int i = 0; i < order.size(); i++){
+            if(winCheck){
+                winCheck = order.get(i).isWinner();
+            }
+        }
+        return winCheck;
     }
 
     public static boolean playCard(Card card, String color){

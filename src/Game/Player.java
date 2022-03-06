@@ -4,11 +4,27 @@ import java.util.ArrayList;
 
 public class Player {
     private ArrayList<Card> Hand = new ArrayList<Card>();
+    private boolean auto;
+    private boolean winner;
 
     public Player(int initial){
         for (int i = 0; i < initial; i++){
             Hand.add(Game.drawDeck());
         }
+        auto = true;
+        winner = false;
+    }
+
+    public void setAuto(boolean t){
+        auto = t;
+    }
+
+    public void setWinner(boolean winner) {
+        this.winner = winner;
+    }
+
+    public boolean isWinner(){
+        return winner;
     }
 
     public void chooseCard(){
