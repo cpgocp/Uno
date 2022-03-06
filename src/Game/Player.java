@@ -40,6 +40,19 @@ public class Player {
         return this.Hand;
     }
 
+    public Card playPosition(int p){
+        Card tmp = this.Hand.get(p);
+        if(!tmp.getColor().equals("Wild") && Game.getTop().getColor().equals(tmp.getColor())){
+            return tmp;
+        } else if (!tmp.getColor().equals("Wild") && Game.getTop().getNum() == tmp.getNum()){
+            return tmp;
+        } else if (tmp.getColor().equals("Wild")){
+            return tmp;
+        } else {
+            return null;
+        }
+    }
+
     public Card chooseCard(){
         for(int i = 0; i < this.Hand.size(); i++){
             if(!this.Hand.get(i).getColor().equals("Wild") && Game.getTop().getColor().equals(this.Hand.get(i).getColor())){
