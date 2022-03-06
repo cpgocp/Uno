@@ -31,6 +31,10 @@ public class Card {
         return this.color;
     }
 
+    public void setColor(String color) {
+        this.color = color;
+    }
+
     public int getNum() {
         return this.num;
     }

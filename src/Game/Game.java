@@ -14,7 +14,7 @@ public class Game {
 
     private static int addCount;
 
-    Random random = new Random();
+    private static Random random = new Random();
 
 
     public Game(){
@@ -67,13 +67,24 @@ public class Game {
         addCount = 0;
     }
 
-    public void shuffleDeck(){
+    public static void shuffleDeck(){
         for(int i = Deck.size(); i > 1; i--){
             int j = random.nextInt(i);
             Card hold = Deck.get(i);
             Deck.set(i,Deck.get(j));
             Deck.set(j,hold);
         }
+    }
+
+    public static void mergeDecks(){
+        for(int i = 0; i < Discard.size() - 1; i--){
+            Deck.add(Discard.get(i));
+            if(Deck.get(Deck.size()-1).isWild()){
+                Deck.get(Deck.size()-1).setColor("Wild");
+            }
+            Discard.remove(i);
+        }
+        shuffleDeck();
     }
 
     public static Card drawDeck(){

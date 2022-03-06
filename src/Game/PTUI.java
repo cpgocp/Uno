@@ -8,8 +8,8 @@ public class PTUI {
         Scanner scanner = new Scanner(System.in);
         Game game = new Game();
         int players = 2;
-        Player current;
-        Player other;
+        Player current = game.getOrder().get((game.getTurn()%players));
+        Player other = game.getOrder().get(((game.getTurn() + 1)%players));
         String message = "";
         int extraC;
         int extraO;
@@ -85,14 +85,24 @@ public class PTUI {
                 System.out.print("\n");
                 message += "\n";
                 System.out.print(message);
-                System.out.println("Press Number-Key to play card or action:");
-            } else { // player controled section
+                System.out.println("");
+
+            } else { // player controlled section
                 int input = scanner.nextInt();
                 String wildC = "";
                 boolean move = false;
+                message = "";
+                if(game.getAddCount() != 0 && !current.hasPlus()){
+                    current.countAdd(game.getAddCount());
+                    message += "You drew " + game.getAddCount() + "\n";
+                    game.resetAddCount();
+                }
                 while(!move) {
+                    System.out.println("Press Number-Key to play card or action:");
                     if (input == 1) {
-                        current.getHand().add(game.drawDeck());
+                        tmp = game.drawDeck();
+                        current.getHand().add(tmp);
+                        message += "You drew a " + tmp + "\n";
                         move = true;
                     } else if (current.getHandSize()+1 >= input && input >= 2) { //playing a card
                         tmp = current.playPosition(input - 2); //check if can play card
@@ -115,21 +125,69 @@ public class PTUI {
                                     break;
                             }
                             game.playCard(tmp, wildC);
+                            message += "You played a Wild" + tmp.getNum() + " as a " + wildC + "\n";
                             move = true;
                         } else if(tmp != null) { //play color card
                             game.playCard(tmp, "");
+                            message += "You played a " + tmp;
                             move = true;
                         } else if (tmp == null){ //can't play card
                             System.out.println("That doesn't work, something else");
                         }
+
+                        if(tmp != null && game.getAddCount() != 0 && !((tmp.isWild() && tmp.getNum() == 4)||(tmp.getNum() == 11))){
+                            current.countAdd(game.getAddCount());
+                            message += "You drew " + game.getAddCount() + "\n" + message;
+                            game.resetAddCount();
+                        }
+
                     } else { //program the more button here...
                         System.out.println("Sorry, try something else");
                     }
+
+
+                } //end of player input
+
+                if(current.getHandSize() == 1){
+                    message += "You have Uno!\n";
+                } else if (current.getHandSize() == 0){
+                    message += "You Won!\n";
+                    current.setWinner(true);
                 }
-            }
 
 
-        }
+                System.out.println(message); // begin printing
+                extraO= other.getHandSize() - 8; // start of printing auto's cards
+                if(extraO>0){
+                    System.out.print(" ## ## ## ## ## ## ## ## +" + extraO);
+                } else {
+                    for( int i = 0; i < other.getHandSize() ; i++) {
+                        System.out.print(" ##");
+                    }
+                }
+                System.out.print("\n");
+                System.out.println(" ");
+                System.out.println("          ##    " + game.getTop()); // draw and discard pile
+                System.out.println(" ");
+                System.out.print(" Dr "); //start printing player cards + number instructions
+                extraO = other.getHandSize() - 7;
+                if(extraO>0){
+                    for(int i = 0; i < 7; i++){
+                        System.out.print(other.getHand().get(i) + " ");
+                    }
+                    System.out.print("+" + extraO);
+                    System.out.print(" Mo");
+                } else {
+                    for(int i = 0; i < other.getHandSize(); i++){
+                        System.out.print(other.getHand().get(i) + " ");
+                    }
 
+                }
+                System.out.print("\n");
+                System.out.println("");
+
+
+            } // end of player section
+        } // end of turns
     }
 }
