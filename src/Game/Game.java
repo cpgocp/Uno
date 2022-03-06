@@ -29,10 +29,11 @@ public class Game {
                 Deck.add(card1);
                 Deck.add(card2);
             }
-            //Card card3 = new Card(4,0);
-            //Card card4 = new Card(4,4);
-            //Deck.add(card3);
-            //Deck.add(card4);
+            Card card3 = new Card(4,0);
+            Card card4 = new Card(4,4);
+            Deck.add(card3);
+
+            Deck.add(card4);
         }
 
         shuffleDeck();
@@ -129,7 +130,7 @@ public class Game {
     }
 
     public static boolean playCard(Card card, String color){
-        if(card.getColor().equals("Wild")){
+        if(card.isWild()){
             if(card.getNum() == 4){
                 addCount+=4;
                 Discard.add(card);
@@ -137,6 +138,7 @@ public class Game {
                 Game.addTurn(1);
             } else {
                 Discard.add(card);
+                getTop().setColor(color);
                 Game.addTurn(1);
             }
             return true;

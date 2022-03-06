@@ -71,12 +71,12 @@ public class Player {
                 Card tmp = this.Hand.get(i);
                 this.Hand.remove(i);
                 return tmp;
-            } else if (!this.Hand.get(i).getColor().equals("Wild") && Game.getTop().getNum() == this.Hand.get(i).getNum()){
+            } else if (!this.Hand.get(i).getColor().equals("Wild") && !Game.getTop().isWild() && Game.getTop().getNum() == this.Hand.get(i).getNum()){
                 Game.playCard(this.Hand.get(i), "");
                 Card tmp = this.Hand.get(i);
                 this.Hand.remove(i);
                 return tmp;
-            } else if (this.Hand.get(i).getColor().equals("Wild")) {
+            } else if (this.Hand.get(i).isWild()) {
                 Game.playCard(this.Hand.get(i), mostColor());
                 Card tmp = this.Hand.get(i);
                 this.Hand.remove(i);
