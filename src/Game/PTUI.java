@@ -35,7 +35,7 @@ public class PTUI {
                     Game.resetAddCount();
                 }
                 tmp = current.chooseCard(); // bot picks card + plays card
-                if(tmp != null && !tmp.getColor().equals("Wild")){ // messages for autobot
+                if(tmp != null && !tmp.isWild()){ // messages for autobot
                     message += "Bot played " + tmp + "\n";
                 } else if (tmp != null && tmp.isWild()){
                     message += "Bot played a Wild" + tmp.getNum() + " as a " + tmp + "\n";
@@ -93,8 +93,6 @@ public class PTUI {
                 System.out.println("");
 
             } else { // player controlled section
-                System.out.println("Press Number-Key to play card or action:");
-                int input = scanner.nextInt();
                 String wildC = "";
                 boolean move = false;
                 message = "";
@@ -108,9 +106,10 @@ public class PTUI {
                     game.resetAddCount();
                 }
                 while(!move) {
+                    System.out.println("Press Number-Key to play card or action:");
+                    int input = scanner.nextInt();
                     if (input == 1) {
-                        tmp = game.drawDeck();
-                        current.getHand().add(tmp);
+                        tmp = current.playingDraw();
                         message += "You drew a " + tmp + "\n";
                         move = true;
                     } else if (current.getHandSize()+1 >= input && input >= 2) { //playing a card
