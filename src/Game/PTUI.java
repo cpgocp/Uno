@@ -133,15 +133,15 @@ public class PTUI {
                                     wildC = "Yellow";
                                     break;
                             }
-                            game.playCard(tmp, wildC);
+                            current.playingCard(tmp, wildC);
                             message += "You played a Wild" + tmp.getNum() + " as a " + wildC + "\n";
                             move = true;
                         } else if(tmp != null) { //play color card
-                            game.playCard(tmp, "");
+                            current.playingCard(tmp,"");
                             message += "You played a " + tmp;
                             move = true;
                         } else if (tmp == null){ //can't play card
-                            System.out.println("That doesn't work, something else");
+                            System.out.println("That doesn't work, try something else");
                         }
 
                         if(tmp != null && game.getAddCount() != 0 && !((tmp.isWild() && tmp.getNum() == 4)||(tmp.getNum() == 11))){

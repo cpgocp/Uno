@@ -53,6 +53,11 @@ public class Player {
         }
     }
 
+    public void playingCard(Card tmp, String c){
+        Game.playCard(this.Hand.get(this.Hand.indexOf(tmp)), c);
+        this.Hand.remove(tmp);
+    }
+
     public Card chooseCard(){
         for(int i = 0; i < this.Hand.size(); i++){
             if(!this.Hand.get(i).getColor().equals("Wild") && Game.getTop().getColor().equals(this.Hand.get(i).getColor())){
