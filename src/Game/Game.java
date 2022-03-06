@@ -10,7 +10,7 @@ public class Game {
     private static final int HAND_SIZE = 7;
 
     private static int turn;
-    private static ArrayList<Player> order;
+    private static ArrayList<Player> order = new ArrayList<Player>();
 
     private static int addCount;
 
@@ -72,7 +72,7 @@ public class Game {
     }
 
     public static void shuffleDeck(){
-        for(int i = Deck.size(); i > 1; i--){
+        for(int i = Deck.size()-1; i > 0; i--){
             int j = random.nextInt(i);
             Card hold = Deck.get(i);
             Deck.set(i,Deck.get(j));
