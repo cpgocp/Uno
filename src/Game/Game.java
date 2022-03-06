@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Game {
-    private static ArrayList<Card> Deck;
+    private static ArrayList<Card> Deck = new ArrayList<Card>();
     private static ArrayList<Card> Discard = new ArrayList<Card>();
 
     private static final int HAND_SIZE = 7;
