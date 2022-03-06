@@ -98,7 +98,7 @@ public class Game {
     }
 
     public static Card getTop(){
-        Card top = Discard.get(Deck.size() - 1);
+        Card top = Discard.get(Discard.size() - 1);
         return top;
     }
 
