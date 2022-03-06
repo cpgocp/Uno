@@ -3,6 +3,7 @@ package Game;
 public class Card {
     private String color;
     private int num;
+    private boolean wild = false;
 
     public Card (int c, int n){
         switch(c){
@@ -20,6 +21,7 @@ public class Card {
                 break;
             case 4:
                 color = "Wild";
+                wild = true;
                 break;
         }
         num = n;
@@ -29,11 +31,21 @@ public class Card {
         return this.color;
     }
 
-    public Character getLetter() {
-        return this.color.charAt(0);
-    }
-
     public int getNum() {
         return this.num;
+    }
+
+    public String toString(){
+        if(this.num == 10){
+            return this.color.substring(0,1) + "S";
+        } else if (this.num == 11){
+            return this.color.substring(0,1) + "+2";
+        } else if (this.num == 12){
+            return this.color.substring(0,1) + "R";
+        } else if (wild && this.num == 4){
+            return this.color.substring(0,1) + "+4";
+        } else {
+            return this.color.substring(0, 1) + this.num;
+        }
     }
 }

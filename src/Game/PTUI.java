@@ -8,13 +8,21 @@ public class PTUI {
         Scanner scanner = new Scanner(System.in);
         Game game = new Game();
         int players = 2;
+        String message = "";
 
         while(!game.hasWinner()){
             if(game.getOrder().get((game.getTurn()%players)).isAuto()){
-                game.getOrder().get((game.getTurn()%players)).chooseCard();
+                Card tmp = game.getOrder().get((game.getTurn()%players)).chooseCard();
+                if(tmp != null && !tmp.getColor().equals("Wild")){
+                    message = "Bot played " + tmp.toString();
+                } else if (tmp != null && tmp.getColor().equals("Wild")){
+                    message = "Both played a Wild" + tmp.getNum() + " as a ";
+                }
             } else {
 
             }
+
+            System.out.println();
         }
 
     }

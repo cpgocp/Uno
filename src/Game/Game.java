@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Game {
     private static ArrayList<Card> Deck;
-    private static ArrayList<Card> Discard;
+    private static ArrayList<Card> Discard = new ArrayList<Card>();
 
     private static final int HAND_SIZE = 7;
 
@@ -18,15 +18,6 @@ public class Game {
 
 
     public Game(){
-
-        int players = 2;
-
-        for(int i = 0; i < players; i++){
-            Player player = new Player(HAND_SIZE);
-            order.add(player);
-        }
-
-        order.get(0).setAuto(false);
 
         turn = 0;
         addCount = 0;
@@ -43,6 +34,18 @@ public class Game {
             Deck.add(card3);
             Deck.add(card4);
         }
+
+        Discard.add(Deck.get(Deck.size()-1));
+        Deck.remove(Deck.size() - 1);
+
+        int players = 2;
+
+        for(int i = 0; i < players; i++){
+            Player player = new Player(HAND_SIZE);
+            order.add(player);
+        }
+
+        order.get(0).setAuto(false);
 
     }
 

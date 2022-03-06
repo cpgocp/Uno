@@ -10,6 +10,7 @@ public class Player {
     public Player(int initial){
         for (int i = 0; i < initial; i++){
             this.Hand.add(Game.drawDeck());
+
         }
         this.auto = true;
         this.winner = false;
@@ -31,29 +32,27 @@ public class Player {
         return this.winner;
     }
 
-    public void chooseCard(){
-        boolean played = false;
+    public Card chooseCard(){
         for(int i = 0; i < this.Hand.size(); i++){
             if(!this.Hand.get(i).getColor().equals("Wild") && Game.getTop().getColor().equals(this.Hand.get(i).getColor())){
                 Game.playCard(this.Hand.get(i), "");
+                Card tmp = this.Hand.get(i);
                 this.Hand.remove(i);
-                played = true;
-                break;
+                return tmp;
             } else if (!this.Hand.get(i).getColor().equals("Wild") && Game.getTop().getNum() == this.Hand.get(i).getNum()){
                 Game.playCard(this.Hand.get(i), "");
+                Card tmp = this.Hand.get(i);
                 this.Hand.remove(i);
-                played = true;
-                break;
+                return tmp;
             } else if (this.Hand.get(i).getColor().equals("Wild")) {
                 Game.playCard(this.Hand.get(i), mostColor());
+                Card tmp = this.Hand.get(i);
                 this.Hand.remove(i);
-                played = true;
-                break;
+                return tmp;
             }
         }
-        if(played == false){
-            this.Hand.add(Game.drawDeck());
-        }
+        this.Hand.add(Game.drawDeck());
+        return null;
     }
 
     public String mostColor(){
