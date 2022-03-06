@@ -45,15 +45,15 @@ public class Card {
 
     public String toString(){
         if(this.num == 10){
-            return this.color.substring(0,1) + "S";
+            return this.color.substring(0,1) + " S";
         } else if (this.num == 11){
             return this.color.substring(0,1) + "+2";
         } else if (this.num == 12){
-            return this.color.substring(0,1) + "R";
+            return this.color.substring(0,1) + " R";
         } else if (wild && this.num == 4){
             return this.color.substring(0,1) + "+4";
         } else {
-            return this.color.substring(0, 1) + this.num;
+            return this.color.substring(0, 1) + this.num + " ";
         }
     }
 }

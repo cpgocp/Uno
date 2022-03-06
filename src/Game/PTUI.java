@@ -62,31 +62,31 @@ public class PTUI {
                 System.out.println(message);
                 extraC = current.getHandSize() - 8; // start of printing auto's cards
                 if(extraC>0){
-                    System.out.print(" ## ## ## ## ## ## ## ## +" + extraC);
+                    System.out.print(" ### ### ### ### ### ### ### ### +" + extraC);
                 } else {
                     for( int i = 0; i < current.getHandSize() ; i++) {
-                        System.out.print(" ##");
+                        System.out.print(" ###");
                     }
                 }
                 System.out.print("\n");
                 System.out.println(" ");
-                System.out.println("          ##    " + game.getTop()); // draw and discard pile
+                System.out.println("          ###    " + game.getTop()); // draw and discard pile
                 System.out.println(" ");
-                System.out.print(" Dr "); //start printing player cards + number instructions
+                System.out.print(" Dr  "); //start printing player cards + number instructions
                 extraO = other.getHandSize() - 7;
-                message = "  1 ";
+                message = " 1  ";
                 if(extraO>0){
                     for(int i = 0; i < 7; i++){
                         System.out.print(other.getHand().get(i) + " ");
-                        message += " " + (i + 2) + " ";
+                        message += " " + (i + 2) + "  ";
                     }
                     System.out.print("+" + extraO);
                     System.out.print(" Mo");
-                    message += "  9  0";
+                    message += "  9   0";
                 } else {
                     for(int i = 0; i < other.getHandSize(); i++){
                         System.out.print(other.getHand().get(i) + " ");
-                        message += " " + (i + 2) + " ";
+                        message += " " + (i + 2) + "  ";
                     }
 
                 }
@@ -171,17 +171,17 @@ public class PTUI {
                 System.out.println(message); // begin printing
                 extraO= other.getHandSize() - 8; // start of printing auto's cards
                 if(extraO>0){
-                    System.out.print(" ## ## ## ## ## ## ## ## +" + extraO);
+                    System.out.print(" ### ### ### ### ### ### ### ### +" + extraO);
                 } else {
                     for( int i = 0; i < other.getHandSize() ; i++) {
-                        System.out.print(" ##");
+                        System.out.print(" ###");
                     }
                 }
                 System.out.print("\n");
                 System.out.println(" ");
                 System.out.println("          ##    " + game.getTop()); // draw and discard pile
                 System.out.println(" ");
-                System.out.print(" Dr "); //start printing player cards + number instructions
+                System.out.print(" Dr  "); //start printing player cards + number instructions
                 extraC = current.getHandSize() - 7;
                 if(extraC>0){
                     for(int i = 0; i < 7; i++){
@@ -228,15 +228,15 @@ public class PTUI {
             System.out.println("You Win!");
             extraO= other.getHandSize() - 8; // start of printing auto's cards
             if(extraO>0){
-                System.out.print(" ## ## ## ## ## ## ## ## +" + extraO);
+                System.out.print(" ### ### ### ### ### ### ### ### +" + extraO);
             } else {
                 for( int i = 0; i < other.getHandSize() ; i++) {
-                    System.out.print(" ##");
+                    System.out.print(" ###");
                 }
             }
             System.out.print("\n");
             System.out.println(" ");
-            System.out.println("          ##    " + game.getTop()); // draw and discard pile
+            System.out.println("          ###    " + game.getTop()); // draw and discard pile
             System.out.println(" ");
         }
 
