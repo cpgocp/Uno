@@ -55,14 +55,20 @@ public class PTUI {
                 System.out.println(" ");
                 System.out.print(" Dr ");
                 extraO = other.getHandSize() - 7;
+                message = "  1 ";
                 if(extraO>0){
                     System.out.print("## ## ## ## ## ## ## +" + extraO);
                     System.out.print(" Mo");
+                    message += " 2  3  4  5  6  7  8  9  0";
                 } else {
-                    for(int i = 0; i < 7; i++){
+                    for(int i = 0; i < other.getHandSize(); i++){
                         System.out.print(other.getHand().get(i) + " ");
+                        message += " " + (i + 2) + " ";
                     }
                 }
+                System.out.print("\n");
+                message += "\n";
+                System.out.print(message);
 
             } else {
 
