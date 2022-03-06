@@ -55,6 +55,22 @@ public class Player {
         return null;
     }
 
+    public void countAdd(int c){
+        for(int i = 0; i < c; i++){
+            this.Hand.add(Game.drawDeck());
+        }
+    }
+
+    public boolean hasPlus(){
+        boolean plus = false;
+        for (int i = 0; i < this.Hand.size(); i++){
+            if(this.Hand.get(i).getNum() == 11 || (this.Hand.get(i).isWild() && this.Hand.get(i).getNum() == 4)){
+                plus = true;
+            }
+        }
+        return plus;
+    }
+
     public String mostColor(){
         int r = 0;
         int b = 0;

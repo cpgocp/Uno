@@ -57,6 +57,10 @@ public class Game {
         return turn;
     }
 
+    public static int getAddCount() {
+        return addCount;
+    }
+
     public static void resetAddCount(){
         addCount = 0;
     }

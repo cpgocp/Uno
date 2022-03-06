@@ -8,21 +8,45 @@ public class PTUI {
         Scanner scanner = new Scanner(System.in);
         Game game = new Game();
         int players = 2;
+        Player current;
+        Player other;
         String message = "";
+        int extra;
 
         while(!game.hasWinner()){
-            if(game.getOrder().get((game.getTurn()%players)).isAuto()){
-                Card tmp = game.getOrder().get((game.getTurn()%players)).chooseCard();
-                if(tmp != null && !tmp.getColor().equals("Wild")){
-                    message = "Bot played " + tmp.toString();
-                } else if (tmp != null && tmp.getColor().equals("Wild")){
-                    message = "Both played a Wild" + tmp.getNum() + " as a ";
+            message = "";
+
+            current = game.getOrder().get((game.getTurn()%players));
+            other = game.getOrder().get(((game.getTurn() + 1)%players));
+
+            Card last = game.getTop();
+
+            if(current.isAuto()){
+                if(game.getAddCount() != 0 && !current.hasPlus()){
+                    current.countAdd(game.getAddCount());
+                    message += "Bot drew " + game.getAddCount() + "\n";
+                    game.resetAddCount();
                 }
+                Card tmp = current.chooseCard();
+                if(tmp != null && !tmp.getColor().equals("Wild")){
+                    message += "Bot played " + tmp + "\n";
+                } else if (tmp != null && tmp.isWild()){
+                    message += "Both played a Wild" + tmp.getNum() + " as a " + tmp + "\n";
+                }
+                if(game.getAddCount() != 0 && !((tmp.isWild() && tmp.getNum() == 4)||(tmp.getNum() == 11))){
+                    current.countAdd(game.getAddCount());
+                    message = "Bot drew " + game.getAddCount() + "\n" + message;
+                    game.resetAddCount();
+                }
+
+                System.out.println(message);
+                for()
+
             } else {
 
             }
 
-            System.out.println();
+
         }
 
     }

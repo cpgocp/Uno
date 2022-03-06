@@ -35,6 +35,10 @@ public class Card {
         return this.num;
     }
 
+    public boolean isWild() {
+        return this.wild;
+    }
+
     public String toString(){
         if(this.num == 10){
             return this.color.substring(0,1) + "S";
