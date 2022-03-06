@@ -182,16 +182,16 @@ public class PTUI {
                 System.out.println("          ##    " + game.getTop()); // draw and discard pile
                 System.out.println(" ");
                 System.out.print(" Dr "); //start printing player cards + number instructions
-                extraO = other.getHandSize() - 7;
-                if(extraO>0){
+                extraC = current.getHandSize() - 7;
+                if(extraC>0){
                     for(int i = 0; i < 7; i++){
-                        System.out.print(other.getHand().get(i) + " ");
+                        System.out.print(current.getHand().get(i) + " ");
                     }
                     System.out.print("+" + extraO);
                     System.out.print(" Mo");
                 } else {
-                    for(int i = 0; i < other.getHandSize(); i++){
-                        System.out.print(other.getHand().get(i) + " ");
+                    for(int i = 0; i < current.getHandSize(); i++){
+                        System.out.print(current.getHand().get(i) + " ");
                     }
 
                 }
