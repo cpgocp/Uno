@@ -183,19 +183,23 @@ public class PTUI {
                 System.out.println(" ");
                 System.out.print(" Dr  "); //start printing player cards + number instructions
                 extraC = current.getHandSize() - 7;
+                message = " 1  ";
                 if(extraC>0){
                     for(int i = 0; i < 7; i++){
                         System.out.print(current.getHand().get(i) + " ");
+                        message += " " + (i + 2) + "  ";
                     }
                     System.out.print("+" + extraO);
                     System.out.print(" Mo");
+                    message += "  9   0";
                 } else {
                     for(int i = 0; i < current.getHandSize(); i++){
                         System.out.print(current.getHand().get(i) + " ");
+                        message += " " + (i + 2) + "  ";
                     }
 
                 }
-                System.out.print("\n");
+                System.out.print("\n" + message + "\n");
                 System.out.println("");
 
 
@@ -203,10 +207,9 @@ public class PTUI {
         } // end of turns
 
         if(current.isAuto() && current.isWinner()){
-            System.out.println("Bot Won!");
-            System.out.print("\n");
+            System.out.println(message);
             System.out.println(" ");
-            System.out.println("          ##    " + game.getTop()); // draw and discard pile
+            System.out.println("          ###    " + game.getTop()); // draw and discard pile
             System.out.println(" ");
             System.out.print(" Dr "); //start printing player cards + number instructions
             extraO = other.getHandSize() - 7;
@@ -225,7 +228,7 @@ public class PTUI {
             System.out.print("\n");
             System.out.println("");
         } else if (!current.isAuto() && current.isWinner()){
-            System.out.println("You Win!");
+            System.out.println(message);
             extraO= other.getHandSize() - 8; // start of printing auto's cards
             if(extraO>0){
                 System.out.print(" ### ### ### ### ### ### ### ### +" + extraO);
