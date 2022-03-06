@@ -13,6 +13,8 @@ public class PTUI {
         String message = "";
         int extraC;
         int extraO;
+        current.playingDraw();
+        other.playingDraw();
 
         while(!Game.hasWinner()){
             message = "";
@@ -199,5 +201,44 @@ public class PTUI {
 
             } // end of player section
         } // end of turns
+
+        if(current.isAuto() && current.isWinner()){
+            System.out.println("Bot Won!");
+            System.out.print("\n");
+            System.out.println(" ");
+            System.out.println("          ##    " + game.getTop()); // draw and discard pile
+            System.out.println(" ");
+            System.out.print(" Dr "); //start printing player cards + number instructions
+            extraO = other.getHandSize() - 7;
+            if(extraO>0){
+                for(int i = 0; i < 7; i++){
+                    System.out.print(other.getHand().get(i) + " ");
+                }
+                System.out.print("+" + extraO);
+                System.out.print(" Mo");
+            } else {
+                for(int i = 0; i < other.getHandSize(); i++){
+                    System.out.print(other.getHand().get(i) + " ");
+                }
+
+            }
+            System.out.print("\n");
+            System.out.println("");
+        } else if (!current.isAuto() && current.isWinner()){
+            System.out.println("You Win!");
+            extraO= other.getHandSize() - 8; // start of printing auto's cards
+            if(extraO>0){
+                System.out.print(" ## ## ## ## ## ## ## ## +" + extraO);
+            } else {
+                for( int i = 0; i < other.getHandSize() ; i++) {
+                    System.out.print(" ##");
+                }
+            }
+            System.out.print("\n");
+            System.out.println(" ");
+            System.out.println("          ##    " + game.getTop()); // draw and discard pile
+            System.out.println(" ");
+        }
+
     }
 }

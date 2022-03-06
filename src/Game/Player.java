@@ -8,7 +8,7 @@ public class Player {
     private boolean winner;
 
     public Player(int initial){
-        for (int i = 0; i < initial; i++){
+        for (int i = 0; i < initial-1; i++){
             this.Hand.add(Game.drawDeck());
 
         }

@@ -29,10 +29,10 @@ public class Game {
                 Deck.add(card1);
                 Deck.add(card2);
             }
-            Card card3 = new Card(4,0);
-            Card card4 = new Card(4,4);
-            Deck.add(card3);
-            Deck.add(card4);
+            //Card card3 = new Card(4,0);
+            //Card card4 = new Card(4,4);
+            //Deck.add(card3);
+            //Deck.add(card4);
         }
 
         shuffleDeck();
