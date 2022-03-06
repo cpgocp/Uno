@@ -46,6 +46,14 @@ public class Game {
 
     }
 
+    public ArrayList<Player> getOrder(){
+        return order;
+    }
+
+    public static int getTurn() {
+        return turn;
+    }
+
     public static void resetAddCount(){
         addCount = 0;
     }

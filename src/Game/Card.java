@@ -26,14 +26,14 @@ public class Card {
     }
 
     public String getColor() {
-        return color;
+        return this.color;
     }
 
     public Character getLetter() {
-        return color.charAt(0);
+        return this.color.charAt(0);
     }
 
     public int getNum() {
-        return num;
+        return this.num;
     }
 }

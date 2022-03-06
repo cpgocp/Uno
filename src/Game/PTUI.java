@@ -10,7 +10,11 @@ public class PTUI {
         int players = 2;
 
         while(!game.hasWinner()){
+            if(game.getOrder().get((game.getTurn()%players)).isAuto()){
+                game.getOrder().get((game.getTurn()%players)).chooseCard();
+            } else {
 
+            }
         }
 
     }

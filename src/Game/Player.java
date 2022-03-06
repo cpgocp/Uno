@@ -9,14 +9,18 @@ public class Player {
 
     public Player(int initial){
         for (int i = 0; i < initial; i++){
-            Hand.add(Game.drawDeck());
+            this.Hand.add(Game.drawDeck());
         }
-        auto = true;
-        winner = false;
+        this.auto = true;
+        this.winner = false;
     }
 
     public void setAuto(boolean t){
-        auto = t;
+        this.auto = t;
+    }
+
+    public boolean isAuto() {
+        return this.auto;
     }
 
     public void setWinner(boolean winner) {
@@ -24,31 +28,31 @@ public class Player {
     }
 
     public boolean isWinner(){
-        return winner;
+        return this.winner;
     }
 
     public void chooseCard(){
         boolean played = false;
-        for(int i = 0; i < Hand.size(); i++){
-            if(!Hand.get(i).getColor().equals("Wild") && Game.getTop().getColor().equals(Hand.get(i).getColor())){
-                Game.playCard(Hand.get(i), "");
-                Hand.remove(i);
+        for(int i = 0; i < this.Hand.size(); i++){
+            if(!this.Hand.get(i).getColor().equals("Wild") && Game.getTop().getColor().equals(this.Hand.get(i).getColor())){
+                Game.playCard(this.Hand.get(i), "");
+                this.Hand.remove(i);
                 played = true;
                 break;
-            } else if (!Hand.get(i).getColor().equals("Wild") && Game.getTop().getNum() == Hand.get(i).getNum()){
-                Game.playCard(Hand.get(i), "");
-                Hand.remove(i);
+            } else if (!this.Hand.get(i).getColor().equals("Wild") && Game.getTop().getNum() == this.Hand.get(i).getNum()){
+                Game.playCard(this.Hand.get(i), "");
+                this.Hand.remove(i);
                 played = true;
                 break;
-            } else if (Hand.get(i).getColor().equals("Wild")) {
-                Game.playCard(Hand.get(i), mostColor());
-                Hand.remove(i);
+            } else if (this.Hand.get(i).getColor().equals("Wild")) {
+                Game.playCard(this.Hand.get(i), mostColor());
+                this.Hand.remove(i);
                 played = true;
                 break;
             }
         }
         if(played == false){
-            Hand.add(Game.drawDeck());
+            this.Hand.add(Game.drawDeck());
         }
     }
 
@@ -57,8 +61,8 @@ public class Player {
         int b = 0;
         int g = 0;
         int y = 0;
-        for (int i = 0; i < Hand.size(); i++){
-            switch(Hand.get(i).getColor()){
+        for (int i = 0; i < this.Hand.size(); i++){
+            switch(this.Hand.get(i).getColor()){
                 case "Red":
                     r++;
                     break;
