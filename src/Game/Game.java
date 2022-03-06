@@ -23,7 +23,7 @@ public class Game {
         addCount = 0;
 
         for(int i = 0; i < 4; i++){ //4 suits
-            for(int j = 0; j < 13 ; j++ ){ //colored cards
+            for(int j = 0; j < 10 ; j++ ){ //colored cards, less than 13 for specials, less than 10 for no specials
                 Card card1 = new Card(i,j);
                 Card card2 = new Card(i,j);
                 Deck.add(card1);
@@ -94,6 +94,7 @@ public class Game {
     public static Card drawDeck(){
         Card drawn = Deck.get(Deck.size() - 1);
         Deck.remove(Deck.size() - 1);
+        addTurn(1);
         return drawn;
     }
 

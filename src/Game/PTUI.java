@@ -137,7 +137,7 @@ public class PTUI {
                             move = true;
                         } else if(tmp != null) { //play color card
                             current.playingCard(tmp,"");
-                            message += "You played a " + tmp;
+                            message += "You played a " + tmp + "\n";
                             move = true;
                         } else if (tmp == null){ //can't play card
                             System.out.println("That doesn't work, try something else");
